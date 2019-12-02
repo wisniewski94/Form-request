@@ -1,0 +1,79 @@
+@use '~keyboard-ui/dist/keyui'
+@import '_globals'
+
+//@include keyui.devmode()
+
+body
+  background-color: $def
+
+*
+    box-sizing: border-box
+    font-family: "Roboto"
+    .wf-active &
+        font-family: "Roboto"
+
+#root
+    margin-top: 20px
+    margin-left: auto
+    margin-right: auto
+    padding: 0 2%
+    max-width: 1012px
+
+button
+  display: block
+  &.transparent
+      @include keyui.transparent-btn($def)
+      @extend %btn
+  &.blue
+      @include keyui.transparent-btn($blue)
+      @extend %btn
+
+.select
+    @include keyui.transparent-select($def)
+    @extend %select
+    select
+        padding: 12px !important
+        &:focus
+            padding: 11px !important
+    &.error
+        @include keyui.error-input($def)
+
+.input, .radio
+    //width: calc(100% - 105px)
+    //min-width: 250px
+    @extend %input
+    *
+        font-size: 14px !important
+    input
+        padding: 12px !important
+        &:focus
+            padding: 11px !important
+    &.transparent
+        @include keyui.transparent-input($def)
+    &.disabled
+        @include keyui.transparent-input($def)
+        @extend %input_disabled
+    &.error
+        @include keyui.error-input($def)
+        input:focus
+            //Dirty KeyboardUI bugfix. Sorry.
+            border: 2px solid #ff4e27 !important
+            box-shadow: 0 0 0 2px #ffe0da !important
+        color: #da2700
+        .errorMsg
+            padding: 4px 0
+
+.ui.radio
+  position: relative
+  display: inline-block
+  @include keyui.transparent-radio($def)
+  + .radio
+    margin: 15px
+
+.label
+  margin-top: 10px
+  font-size: 14px
+  line-height: 25px
+  @include keyui.textColor($def)
+  span
+    font-weight: 700

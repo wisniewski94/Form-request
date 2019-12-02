@@ -1,0 +1,22 @@
+@use '~keyboard-ui/dist/keyui'
+@import '_globals'
+
+.specific
+  *
+    display: inline-block
+  .input, .select
+    width: 150px
+  .input:not(:first-of-type), span
+    margin-left: 20px
+
+.daily
+  input
+    width: 150px
+
+span
+  @include keyui.textColor($def)
+
+button
+  margin-top: 40px //dirty fix
+  float: right
+
